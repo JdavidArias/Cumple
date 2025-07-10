@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    /* ← Fondo oscuro */
+    color: white;
+    /* ← Texto claro para que se vea */
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.globos {
+    margin-top: 30px;
+    position: relative;
+    height: 150px;
+}
+
+.globo {
+    width: 50px;
+    height: 70px;
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    bottom: 0;
+    animation: flotarArriba 6s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+.globo::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #333;
+    transform: translateX(-50%);
+}
+
+/* Colores de globos y posición inicial */
+.rojo {
+    background: #e63946;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.azul {
+    background: #457b9d;
+    left: 30%;
+    animation-delay: 1s;
+}
+
+.verde {
+    background: #2a9d8f;
+    left: 50%;
+    animation-delay: 2s;
+}
+
+.amarillo {
+    background: #f4a261;
+    left: 70%;
+    animation-delay: 3s;
+}
+
+/* Movimiento más natural */
+@keyframes flotarArriba {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-20px) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(3deg);
+    }
+
+    75% {
+        transform: translateY(-60px) rotate(-2deg);
+    }
+
+    100% {
+        transform: translateY(-80px) rotate(0deg);
+    }
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    background: transparent;
+    color: white;
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+    text-align: center;
+}
+
+
+
+/* Fuegos artificiales en el fondo */
+/* ===== FONDO: fuegos artificiales ===== */
+canvas#fuegos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== CONTENEDOR DE GLOBOS ===== */
+#globos-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== ESTILOS DE GLOBOS DINÁMICOS ===== */
+.globo-dinamico {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    border-radius: 50% 50% 45% 45%;
+    opacity: 0.8;
+    animation: flotar 10s linear forwards;
+}
+
+.globo-dinamico::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #333;
+    transform: translateX(-50%);
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-120px) rotate(360deg);
+    }
+}
+
+audio {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+    .mensaje {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .firma {
+        font-size: 1rem;
+    }
+
+    .globo-dinamico {
+        width: 30px;
+        height: 45px;
+    }
+}
+
+.contenedor {
+    animation: aparecer 1.2s ease-in-out both;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.titulo,
+.mensaje {
+    text-shadow: 1px 1px 5px #000;
+}

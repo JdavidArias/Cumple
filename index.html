@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¡Feliz Cumpleaños!</title>
+    <link rel="stylesheet" href="./css/Style.css">
+    <script src="./js/fire.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Música de fondo -->
+    <audio id="musica" autoplay loop>
+        <source src="./audio/musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+    </audio>
+    <script>
+        document.addEventListener('click', () => {
+            const musica = document.getElementById('musica');
+            if (musica && musica.paused) {
+                musica.play();
+            }
+        });
+    </script>
+
+
+    <!-- Canvas de fuegos artificiales -->
+    <canvas id="fuegos"></canvas>
+
+    <!-- Contenedor del mensaje y globos -->
+    <div class="contenedor" id="mensaje">
+        <h1 class="titulo">💖 ¡Feliz Cumpleaños, Tania! 💖</h1>
+        <p class="mensaje">
+            Hoy no solo celebramos el día que naciste, sino también lo afortunado que soy de tenerte en mi vida.<br>
+            Que esta vuelta al sol te regale sonrisas, sueños cumplidos y momentos que te llenen el alma.<br>
+            Gracias por ser tú: auténtica, fuerte y profundamente especial.
+        </p>
+
+        <!-- Contenedor dinámico de globos -->
+        <div id="globos-container"></div>
+
+        <p class="mensaje">
+            ¡Que tengas un día tan hermoso como tú! 🌟
+        </p>
